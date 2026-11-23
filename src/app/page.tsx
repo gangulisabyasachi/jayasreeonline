@@ -9,22 +9,22 @@ const PANELS = [
     subtitle: "Jayasree Publications",
     buttonText: "VISIT STORE",
     href: "https://books.jayasree.com",
-    // Atmospheric bookstore interior
+    // Atmospheric bookstore interior with floor-to-ceiling wooden bookshelves
     image: "/images/bookstore.jpg",
-    fallbackImage: "https://images.unsplash.com/photo-1507842217343-583bb7270b66?q=80&w=1600&auto=format&fit=crop",
-    // Rich terracotta/warm tint matching Jayasree publications brand
+    fallbackImage: "https://images.unsplash.com/photo-1521587760476-6c12a4b040da?q=80&w=1600&auto=format&fit=crop",
+    // Rich terracotta/warm amber overlay matching Jayasree publications brand
     tint: "bg-[#7c1d05]/70 group-hover:bg-[#7c1d05]/50",
   },
   {
     id: "diary",
     title: "Lawyers' Diary",
-    subtitle: "Advocate Court Diary & Cause List",
+    subtitle: "Court Diary & Cause List",
     buttonText: "OPEN DIARY",
     href: "https://diary.jayasree.com",
-    // Law diary with advocate white neck band & fountain pen
-    image: "/images/lawyer-diary-band.jpg",
+    // Authentic lawyer leather court diary on dark chamber desk with fountain pen
+    image: "/images/lawyer-diary.jpg",
     fallbackImage: "https://images.unsplash.com/photo-1450133064473-71024230f91b?q=80&w=1600&auto=format&fit=crop",
-    // Deep court navy / sapphire tint matching Law Diary brand
+    // Deep court navy / sapphire overlay matching Law Diary brand
     tint: "bg-[#0b1b36]/75 group-hover:bg-[#0b1b36]/55",
   },
   {
@@ -33,10 +33,10 @@ const PANELS = [
     subtitle: "Journals, Reports & Case Law",
     buttonText: "READ DIGEST",
     href: "https://digest.jayasree.com",
-    // Bundle of legal magazines, journals with reading specs
+    // Stack / bundle of legal journals, law reports & magazines with reading specs
     image: "/images/legal-digest-specs.jpg",
-    fallbackImage: "https://images.unsplash.com/photo-1589829545856-d10d557cf95f?q=80&w=1600&auto=format&fit=crop",
-    // Deep emerald / malachite green tint
+    fallbackImage: "https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?q=80&w=1600&auto=format&fit=crop",
+    // Deep emerald / malachite green overlay
     tint: "bg-[#05291d]/75 group-hover:bg-[#05291d]/55",
   },
 ];
@@ -70,7 +70,6 @@ export default function HomePage() {
             <img
               src={panel.image}
               onError={(e) => {
-                // If local generated image is still finishing, seamlessly use fallback
                 const target = e.currentTarget;
                 if (target.src !== panel.fallbackImage) {
                   target.src = panel.fallbackImage;
@@ -88,7 +87,7 @@ export default function HomePage() {
             {/* Subtle Vignette for cinematic contrast */}
             <div className="absolute inset-0 bg-gradient-to-t from-black/65 via-transparent to-black/35 pointer-events-none" />
 
-            {/* Centered Content (matching Traversy / Split Homepage reference) */}
+            {/* Centered Content */}
             <div className="relative z-10 text-center px-4 sm:px-8 space-y-4 max-w-sm">
               <p className="text-[11px] sm:text-xs font-mono uppercase tracking-[0.25em] text-white/70 drop-shadow">
                 {panel.subtitle}

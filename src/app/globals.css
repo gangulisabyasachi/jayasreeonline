@@ -1,0 +1,127 @@
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700;800;900&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --font-cinzel: 'Cinzel', Georgia, serif;
+  --font-serif: 'Cormorant Garamond', Georgia, 'Times New Roman', serif;
+  --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-mono: 'JetBrains Mono', 'SF Mono', Menlo, monospace;
+
+  --color-parchment: #F4EFEB;
+  --color-parchment-light: #FAF6F0;
+  --color-ink: #161412;
+  --color-ink-muted: #6E6357;
+  --color-bookcloth: #151311;
+  --color-leather: #281812;
+  --color-gold: #C59B27;
+  --color-terracotta: #D9541E;
+  --color-terracotta-hover: #BF4513;
+}
+
+@layer base {
+  body {
+    font-family: var(--font-sans);
+    background-color: var(--color-parchment);
+    color: var(--color-ink);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-serif);
+    letter-spacing: -0.01em;
+  }
+
+  ::selection {
+    background-color: var(--color-terracotta);
+    color: #ffffff;
+  }
+}
+
+@layer utilities {
+  .font-cinzel { font-family: var(--font-cinzel); }
+  .font-serif  { font-family: var(--font-serif); }
+  .font-sans   { font-family: var(--font-sans); }
+  .font-mono   { font-family: var(--font-mono); }
+
+  .shadow-paper {
+    box-shadow: 0 4px 20px -2px rgba(40, 24, 18, 0.06), 0 1px 3px rgba(40, 24, 18, 0.03);
+  }
+
+  .shadow-bookplate {
+    box-shadow: 0 10px 30px -5px rgba(40, 24, 18, 0.08), 0 0 0 1px rgba(40, 24, 18, 0.08);
+  }
+
+  .card-bookplate {
+    background-color: #FAF6F0;
+    border: 1px solid rgba(40, 24, 18, 0.12);
+    box-shadow: 0 4px 20px -2px rgba(40, 24, 18, 0.05);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  .card-bookplate:hover {
+    border-color: rgba(197, 155, 39, 0.5);
+    box-shadow: 0 12px 32px -4px rgba(40, 24, 18, 0.1), 0 0 0 1px rgba(197, 155, 39, 0.25);
+    transform: translateY(-2px);
+  }
+
+  .hairline-rule {
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgba(197, 155, 39, 0.4) 20%,
+      rgba(40, 24, 18, 0.3) 50%,
+      rgba(197, 155, 39, 0.4) 80%,
+      transparent
+    );
+    height: 1px;
+  }
+
+  .btn-wax {
+    background-color: var(--color-terracotta);
+    color: #ffffff;
+    font-family: var(--font-cinzel);
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    transition: all 0.25s ease;
+  }
+  .btn-wax:hover {
+    background-color: var(--color-terracotta-hover);
+    box-shadow: 0 0 20px -2px rgba(217, 84, 30, 0.45);
+    transform: translateY(-1px);
+  }
+
+  .btn-letterpress {
+    background-color: var(--color-bookcloth);
+    color: var(--color-parchment-light);
+    border: 1px solid rgba(197, 155, 39, 0.35);
+    font-family: var(--font-cinzel);
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    transition: all 0.25s ease;
+  }
+  .btn-letterpress:hover {
+    background-color: #281812;
+    border-color: var(--color-gold);
+    color: #ffffff;
+    box-shadow: 0 4px 16px rgba(21, 19, 17, 0.25);
+    transform: translateY(-1px);
+  }
+}
+
+/* Fine scrollbar */
+::-webkit-scrollbar { width: 5px; height: 5px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: rgba(40, 24, 18, 0.15); border-radius: 4px; }
+::-webkit-scrollbar-thumb:hover { background: rgba(40, 24, 18, 0.35); }
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  *, ::before, ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

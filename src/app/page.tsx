@@ -1,0 +1,113 @@
+"use client";
+
+import { useState } from "react";
+
+const PANELS = [
+  {
+    id: "books",
+    title: "Book Store",
+    subtitle: "Jayasree Publications",
+    buttonText: "VISIT STORE",
+    href: "https://books.jayasree.com",
+    // Atmospheric bookstore interior
+    image: "/images/bookstore.jpg",
+    fallbackImage: "https://images.unsplash.com/photo-1507842217343-583bb7270b66?q=80&w=1600&auto=format&fit=crop",
+    // Rich terracotta/warm tint matching Jayasree publications brand
+    tint: "bg-[#7c1d05]/70 group-hover:bg-[#7c1d05]/50",
+  },
+  {
+    id: "diary",
+    title: "Lawyers' Diary",
+    subtitle: "Advocate Court Diary & Cause List",
+    buttonText: "OPEN DIARY",
+    href: "https://diary.jayasree.com",
+    // Law diary with advocate white neck band & fountain pen
+    image: "/images/lawyer-diary-band.jpg",
+    fallbackImage: "https://images.unsplash.com/photo-1450133064473-71024230f91b?q=80&w=1600&auto=format&fit=crop",
+    // Deep court navy / sapphire tint matching Law Diary brand
+    tint: "bg-[#0b1b36]/75 group-hover:bg-[#0b1b36]/55",
+  },
+  {
+    id: "digest",
+    title: "Legal Digest",
+    subtitle: "Journals, Reports & Case Law",
+    buttonText: "READ DIGEST",
+    href: "https://digest.jayasree.com",
+    // Bundle of legal magazines, journals with reading specs
+    image: "/images/legal-digest-specs.jpg",
+    fallbackImage: "https://images.unsplash.com/photo-1589829545856-d10d557cf95f?q=80&w=1600&auto=format&fit=crop",
+    // Deep emerald / malachite green tint
+    tint: "bg-[#05291d]/75 group-hover:bg-[#05291d]/55",
+  },
+];
+
+export default function HomePage() {
+  const [hovered, setHovered] = useState<string | null>(null);
+
+  return (
+    <main className="h-screen w-screen overflow-hidden flex flex-col md:flex-row bg-black select-none">
+      {PANELS.map((panel) => {
+        const isHovered = hovered === panel.id;
+        const isAnyHovered = hovered !== null;
+
+        return (
+          <a
+            key={panel.id}
+            href={panel.href}
+            target="_blank"
+            rel="noopener noreferrer"
+            onMouseEnter={() => setHovered(panel.id)}
+            onMouseLeave={() => setHovered(null)}
+            className={`relative flex items-center justify-center overflow-hidden cursor-pointer transition-all duration-700 ease-[cubic-bezier(0.25,1,0.5,1)] ${
+              isHovered
+                ? "md:flex-[1.85] flex-[1.6]"
+                : isAnyHovered
+                ? "md:flex-[0.58] flex-[0.7]"
+                : "flex-1"
+            } group border-b md:border-b-0 md:border-r border-white/10 last:border-none`}
+          >
+            {/* Background Image with Fallback and Smooth Hover Zoom */}
+            <img
+              src={panel.image}
+              onError={(e) => {
+                // If local generated image is still finishing, seamlessly use fallback
+                const target = e.currentTarget;
+                if (target.src !== panel.fallbackImage) {
+                  target.src = panel.fallbackImage;
+                }
+              }}
+              alt={panel.title}
+              className="absolute inset-0 w-full h-full object-cover transition-transform duration-1000 ease-out group-hover:scale-110"
+            />
+
+            {/* Tinted Color Overlay */}
+            <div
+              className={`absolute inset-0 ${panel.tint} transition-colors duration-500`}
+            />
+
+            {/* Subtle Vignette for cinematic contrast */}
+            <div className="absolute inset-0 bg-gradient-to-t from-black/65 via-transparent to-black/35 pointer-events-none" />
+
+            {/* Centered Content (matching Traversy / Split Homepage reference) */}
+            <div className="relative z-10 text-center px-4 sm:px-8 space-y-4 max-w-sm">
+              <p className="text-[11px] sm:text-xs font-mono uppercase tracking-[0.25em] text-white/70 drop-shadow">
+                {panel.subtitle}
+              </p>
+
+              <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-white tracking-tight drop-shadow-md">
+                {panel.title}
+              </h2>
+
+              {/* Minimalist bordered box button */}
+              <div className="pt-2">
+                <span className="inline-block px-8 py-3.5 border-2 border-white text-white text-xs sm:text-sm font-bold tracking-[0.2em] uppercase transition-all duration-300 group-hover:bg-white group-hover:text-black group-hover:shadow-2xl">
+                  {panel.buttonText}
+                </span>
+              </div>
+            </div>
+          </a>
+        );
+      })}
+    </main>
+  );
+}

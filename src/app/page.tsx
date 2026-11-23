@@ -17,15 +17,15 @@ const PANELS = [
   },
   {
     id: "diary",
-    title: "Lawyers' Diary",
+    title: "Lawyer Diary",
     subtitle: "Court Diary & Cause List",
     buttonText: "OPEN DIARY",
     href: "https://diary.jayasree.com",
-    // Authentic lawyer leather court diary on dark chamber desk with fountain pen
+    // Leather-bound court diary with gilded edges and thumb index tabs
     image: "/images/lawyer-diary.jpg",
-    fallbackImage: "https://images.unsplash.com/photo-1450133064473-71024230f91b?q=80&w=1600&auto=format&fit=crop",
+    fallbackImage: "/images/lawyer-diary.jpg",
     // Deep court navy / sapphire overlay matching Law Diary brand
-    tint: "bg-[#0b1b36]/75 group-hover:bg-[#0b1b36]/55",
+    tint: "bg-[#0b1b36]/70 group-hover:bg-[#0b1b36]/50",
   },
   {
     id: "digest",

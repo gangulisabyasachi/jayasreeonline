@@ -12,8 +12,8 @@ const PANELS = [
     // Atmospheric bookstore interior with floor-to-ceiling wooden bookshelves
     image: "/images/bookstore.jpg",
     fallbackImage: "https://images.unsplash.com/photo-1521587760476-6c12a4b040da?q=80&w=1600&auto=format&fit=crop",
-    // Rich terracotta/warm amber overlay matching Jayasree publications brand
-    tint: "bg-[#7c1d05]/70 group-hover:bg-[#7c1d05]/50",
+    // Aesthetic, soothing warm dark espresso / antique oak overlay
+    tint: "bg-[#1c140e]/75 group-hover:bg-[#1c140e]/55",
   },
   {
     id: "diary",

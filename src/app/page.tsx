@@ -8,7 +8,7 @@ const PANELS = [
     title: "Book Store",
     subtitle: "Jayasree Publications",
     buttonText: "VISIT STORE",
-    href: "https://books.jayasree.com",
+    href: "https://jayasreepublications.vercel.app/",
     // Atmospheric bookstore interior with floor-to-ceiling wooden bookshelves
     image: "/images/bookstore.jpg",
     fallbackImage: "https://images.unsplash.com/photo-1521587760476-6c12a4b040da?q=80&w=1600&auto=format&fit=crop",
@@ -20,7 +20,7 @@ const PANELS = [
     title: "Lawyer Diary",
     subtitle: "Court Diary & Cause List",
     buttonText: "OPEN DIARY",
-    href: "https://diary.jayasree.com",
+    href: "https://lex-daily.vercel.app/",
     // Leather-bound court diary with gilded edges and thumb index tabs
     image: "/images/lawyer-diary.jpg",
     fallbackImage: "/images/lawyer-diary.jpg",
@@ -31,9 +31,8 @@ const PANELS = [
     id: "digest",
     title: "Legal Digest",
     subtitle: "Journals, Reports & Case Law",
-    buttonText: "COMING SOON",
-    href: "#",
-    isComingSoon: true,
+    buttonText: "READ DIGEST",
+    href: "https://legal-digest-lovat.vercel.app/",
     // Stack / bundle of legal journals, law reports & magazines with reading specs
     image: "/images/legal-digest-specs.jpg",
     fallbackImage: "https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?q=80&w=1600&auto=format&fit=crop",
@@ -54,14 +53,9 @@ export default function HomePage() {
         return (
           <a
             key={panel.id}
-            href={panel.isComingSoon ? undefined : panel.href}
-            target={panel.isComingSoon ? undefined : "_blank"}
-            rel={panel.isComingSoon ? undefined : "noopener noreferrer"}
-            onClick={(e) => {
-              if (panel.isComingSoon) {
-                e.preventDefault();
-              }
-            }}
+            href={panel.href}
+            target="_blank"
+            rel="noopener noreferrer"
             onMouseEnter={() => setHovered(panel.id)}
             onMouseLeave={() => setHovered(null)}
             className={`relative flex items-center justify-center overflow-hidden cursor-pointer transition-all duration-700 ease-[cubic-bezier(0.25,1,0.5,1)] ${

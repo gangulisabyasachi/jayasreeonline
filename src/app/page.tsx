@@ -31,8 +31,9 @@ const PANELS = [
     id: "digest",
     title: "Legal Digest",
     subtitle: "Journals, Reports & Case Law",
-    buttonText: "READ DIGEST",
-    href: "https://digest.jayasree.com",
+    buttonText: "COMING SOON",
+    href: "#",
+    isComingSoon: true,
     // Stack / bundle of legal journals, law reports & magazines with reading specs
     image: "/images/legal-digest-specs.jpg",
     fallbackImage: "https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?q=80&w=1600&auto=format&fit=crop",
@@ -53,9 +54,14 @@ export default function HomePage() {
         return (
           <a
             key={panel.id}
-            href={panel.href}
-            target="_blank"
-            rel="noopener noreferrer"
+            href={panel.isComingSoon ? undefined : panel.href}
+            target={panel.isComingSoon ? undefined : "_blank"}
+            rel={panel.isComingSoon ? undefined : "noopener noreferrer"}
+            onClick={(e) => {
+              if (panel.isComingSoon) {
+                e.preventDefault();
+              }
+            }}
             onMouseEnter={() => setHovered(panel.id)}
             onMouseLeave={() => setHovered(null)}
             className={`relative flex items-center justify-center overflow-hidden cursor-pointer transition-all duration-700 ease-[cubic-bezier(0.25,1,0.5,1)] ${
